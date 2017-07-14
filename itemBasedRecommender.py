@@ -22,10 +22,11 @@ def sampleInteractions(user_id,items_with_rating,n):
     '''
         如果某个用户打分行为特别多，可以选择适当做点下采样
     '''
-    if len(items_with_rating) > n:
-        return user_id, random.sample(items_with_rating,n)
-    else:
-        return user_id, items_with_rating
+    #if len(items_with_rating) > n:
+    #    return user_id, random.sample(items_with_rating,n)
+    #else:
+    #    return user_id, items_with_rating
+    return user_id, items_with_rating
 
 def findItemPairs(user_id,items_with_rating):
     '''
@@ -85,8 +86,8 @@ def nearestNeighbors(item_id,items_and_sims,n):
     '''
         排序选出相似度最高的N个邻居
     '''
-    items_and_sims.sort(key=lambda x: x[1][0],reverse=True)
-    return item_id, items_and_sims[:n]
+    list(items_and_sims).sort(key=lambda x: x[1][0],reverse=True)
+    return item_id, list(items_and_sims)[:n]
 
 def topNRecommendations(user_id,items_with_rating,item_sims,n):
     '''
